@@ -1,5 +1,6 @@
 package com.github.dagmararaczak.skillscollector.listeners;
 
+import com.github.dagmararaczak.skillscollector.model.entities.Skill;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -44,7 +45,7 @@ public class HibernateInitializer implements ServletContextListener {
 
             //configuration.addAnnotatedClass(User.class);
             //configuration.addAnnotatedClass(Source.class);
-            //configuration.addAnnotatedClass(Skill.class);
+            configuration.addAnnotatedClass(Skill.class);
 
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                     .applySettings(configuration.getProperties()).build();
