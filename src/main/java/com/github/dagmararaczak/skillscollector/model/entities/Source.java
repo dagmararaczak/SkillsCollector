@@ -3,12 +3,18 @@ package com.github.dagmararaczak.skillscollector.model.entities;
 
 
 import javax.persistence.*;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
-@Table(name = "sources")
+@Table(name = "knownSources")
 
 public class Source {
+
+
+    @ManyToMany
+            @JoinTable(name = "sources_attached_skills", joinColumns = @JoinColumn(name = "source_id"), inverseJoinColumns = @JoinColumn(name = "skill_id"))
+      Set<Skill> attachedSkills = new HashSet<>();
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,6 +44,14 @@ public class Source {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<Skill> getAttachedSkills() {
+        return attachedSkills;
+    }
+
+    public void setAttachedSkills(Set<Skill> attachedSkills) {
+        this.attachedSkills = attachedSkills;
     }
 
     @Override

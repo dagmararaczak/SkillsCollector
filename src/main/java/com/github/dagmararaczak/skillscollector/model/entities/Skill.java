@@ -5,7 +5,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "skills")
+@Table(name = "attachedSkills")
 public class Skill {
 
 

@@ -2,18 +2,28 @@ package com.github.dagmararaczak.skillscollector.model.entities;
 
 
 import javax.persistence.*;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @Table(name = "users")
 public class User {
+
+
+    @ManyToMany
+    @JoinTable(name = "users_known_sources", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "source_id"))
+    Set<Source> knownSources = new HashSet<>();
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String first_name;
-    private String last_name;
-    private String password;
 
+    @Column(name = "first_name")
+    private String firstName;
+    @Column(name = "last_name")
+    private String lastName;
+    @Column(nullable = false)
+    private String password;
     @Column(unique = true,nullable = false)
     private String username;
 
@@ -21,20 +31,20 @@ public class User {
         return id;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getPassword() {
@@ -53,29 +63,34 @@ public class User {
         this.username = username;
     }
 
+    public Set<Source> getKnownSources() {
+        return knownSources;
+    }
+
+    public void setKnownSources(Set<Source> knownSources) {
+        this.knownSources = knownSources;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return Objects.equals(id, user.id) &&
-                Objects.equals(first_name, user.first_name) &&
-                Objects.equals(last_name, user.last_name) &&
-                Objects.equals(password, user.password) &&
                 Objects.equals(username, user.username);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, first_name, last_name, password, username);
+        return Objects.hash(id, username);
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", first_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", password='" + password + '\'' +
                 ", username='" + username + '\'' +
                 '}';
