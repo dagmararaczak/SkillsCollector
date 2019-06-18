@@ -9,9 +9,13 @@ import java.util.*;
 public class User {
 
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_known_sources", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "source_id"))
     Set<Source> knownSources = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "users_unknown_sources", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "source_id"))
+    Set<Source> unknownSources = new HashSet<>();
 
 
     @Id
@@ -94,6 +98,14 @@ public class User {
                 ", password='" + password + '\'' +
                 ", username='" + username + '\'' +
                 '}';
+    }
+
+    public Set<Source> getUnknownSources() {
+        return unknownSources;
+    }
+
+    public void setUnknownSources(Set<Source> unknownSources) {
+        this.unknownSources = unknownSources;
     }
 }
 

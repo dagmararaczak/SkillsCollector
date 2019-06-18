@@ -20,11 +20,24 @@ public class Source {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     private String description;
 
     @Column(unique = true,nullable = false)
     private String name;
 
+
+    public Source() {
+    }
+
+    public Source(String name) {
+        this.name = name;
+    }
+
+    public Source(String description, String name) {
+        this.description = description;
+        this.name = name;
+    }
 
     public Long getId() {
         return id;

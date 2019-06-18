@@ -3,8 +3,7 @@
 
 <head>
     <title>Rejestracja</title>
-    <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
-          rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 
 
 </head>
@@ -12,11 +11,11 @@
 <jsp:include page="fragments/header.jsp"/>
 
 <div class="jumbotron text-center" style="background-color: lightseagreen">
-    <h1> Rejestracja </h1>
+    <h1 style="font-family: cursive "> Rejestracja </h1>
 </div>
 
 <form action="/register" method="post">
-
+<div class="container">
     <p><font color="red">${errorMessage}</font></p>
     <div class="form-group">
         <label ><strong>&nbsp;Nazwa uzytkownika</strong></label>
@@ -39,10 +38,9 @@
         <input type="password" name="password" value="${user.password}"  class="form-control">
     </div>
 
-
     <input class="btn" style="background-color: teal" type="submit"value="Przeslij" >
     <input class="btn" style="background-color: crimson"  type="reset" value="Wyczysc">
-
+</div>
 </form>
 
 

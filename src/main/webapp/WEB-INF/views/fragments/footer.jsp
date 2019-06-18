@@ -3,9 +3,14 @@
 
 
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/AllUsersPage.css">
+<div class="container">
 
-<div>
-    <p>Hej ${param.get("firstName")} ${param.get("lastName")} Dzisiaj jest ${LocalDateTime.now()}</p>
+
+
+
+    <footer> <p><span class="glyphicon-hand-right glyphicon"></span>Dagmara Raczak,  ${LocalDateTime.now()}</p></footer>
 </div>
 
 </html>

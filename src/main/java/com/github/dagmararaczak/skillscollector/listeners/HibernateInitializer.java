@@ -29,21 +29,18 @@ public class HibernateInitializer implements ServletContextListener {
             Properties hbnProperties = new Properties();
             hbnProperties.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
             hbnProperties.put(Environment.URL, "jdbc:mysql://localhost:3306/skills_collector?useSSL=false&serverTimezone=UTC");
-            // Nazwę użytkownika dostosuj do swojej instalacji MySQL
+
             hbnProperties.put(Environment.USER, "root");
-            // Hasło użytkownika dostosuj do swojej instalacji MySQL
-            hbnProperties.put(Environment.PASS, "");
+
+            hbnProperties.put(Environment.PASS, "Cfaniak1988");
             hbnProperties.put(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
             hbnProperties.put(Environment.SHOW_SQL, "true");
             hbnProperties.put(Environment.FORMAT_SQL, "true");
             hbnProperties.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
-            // W przypadku gdy silnik Hibernate ma tworzyć schemat bazy danych, to poniżej
-            // użyj opcji create-drop albo update
+
             hbnProperties.put(Environment.HBM2DDL_AUTO, "update");
             hbnProperties.put(Environment.HBM2DDL_CHARSET_NAME,"UTF-8");
             configuration.setProperties(hbnProperties);
-
-            // Odkomentuj poniższe instrukcje po utworzeniu klas encji (kolejne zadania)
 
             configuration.addAnnotatedClass(User.class);
             configuration.addAnnotatedClass(Source.class);
