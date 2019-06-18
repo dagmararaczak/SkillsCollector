@@ -17,10 +17,24 @@ import java.util.List;
 public class LoginServlet extends HttpServlet {
 
 
+    UserDao userDao;
+
+    @Override
+    public void init() throws ServletException {
+
+        SessionFactory sessionFactory =(SessionFactory) getServletContext().getAttribute("session_factory");
+
+         userDao = new UserDao(sessionFactory);
+
+    }
+
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(req,resp);
     }
+
+
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,9 +42,7 @@ public class LoginServlet extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
-        SessionFactory sessionFactory =(SessionFactory) req.getServletContext().getAttribute("session_factory");
 
-        UserDao userDao = new UserDao(sessionFactory);
         List<User> users = userDao.getAllByUsernameAndPassword(username, password);
 
         if (users.size() == 1){
@@ -42,6 +54,7 @@ public class LoginServlet extends HttpServlet {
             resp.sendRedirect("/user/skills");
         } else{
             req.setAttribute("error","bledne dane logowania");
+            req.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(req,resp);
         }
 
 
