@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.transaction.Transactional;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -32,30 +33,6 @@ public class UserSkillsServlet extends HttpServlet {
 
 
     }
-
-/*
-    private Map<Skill,Integer> getUserSkills(User user) {
-        List<Skill> allUserSkills = userDao.getSkills(user);
-        Map<Skill,Integer> userSkills = new HashMap<>();
-
-        for (Skill skill : allUserSkills){
-
-            if(!userSkills.containsKey(skill)){
-                userSkills.put(skill,1);
-            }else if(userSkills.containsKey(skill)){
-                int skillscount = userSkills.get(skill);
-                skillscount++;
-                userSkills.put(skill,skillscount);
-
-
-            }
-
-        }
-
-        return userSkills;
-    }*/
-
-
 
     @Override
     public void init() throws ServletException {
