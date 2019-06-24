@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 @WebListener
 public class HibernateInitializer implements ServletContextListener {
 
-    private  static  final Logger logger = Logger.getLogger(HibernateInitializer.class.getName());
+    private static final Logger logger = Logger.getLogger("HibernateInitializer");
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
@@ -39,8 +39,11 @@ public class HibernateInitializer implements ServletContextListener {
             hbnProperties.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
 
             hbnProperties.put(Environment.HBM2DDL_AUTO, "update");
-            hbnProperties.put(Environment.HBM2DDL_CHARSET_NAME,"UTF-8");
+            hbnProperties.put(Environment.HBM2DDL_CHARSET_NAME, "UTF-8");
+
             configuration.setProperties(hbnProperties);
+
+
 
             configuration.addAnnotatedClass(User.class);
             configuration.addAnnotatedClass(Source.class);
@@ -50,10 +53,11 @@ public class HibernateInitializer implements ServletContextListener {
                     .applySettings(configuration.getProperties()).build();
             SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 
-            sce.getServletContext().setAttribute("session_factory",sessionFactory);
-            logger.info("POPRAWNIE ZAINICJALIZOWANO HIBERNATE");
+            sce.getServletContext().setAttribute("session_factory", sessionFactory);
+
+            logger.info("Poprawnie zainicjalizowano hibernate");
         } catch (Exception e) {
-           logger.log(Level.SEVERE, "Błąd konfiguracji Hibernate!", e);
+            logger.log(Level.SEVERE, "Błąd konfiguracji Hibernate!", e);
         }
     }
 }

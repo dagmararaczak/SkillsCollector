@@ -45,7 +45,7 @@ public class AuthorizationFilter extends HttpFilter {
         authorizedPath.add("/user/sources");
         authorizedPath.add("/user/unknown-sources");
         authorizedPath.add("/logout");
-        authorizedPath.add("user/add-source");
+        authorizedPath.add("/user/add-source");
 
 
         unauthorizedPath.add("/register");
