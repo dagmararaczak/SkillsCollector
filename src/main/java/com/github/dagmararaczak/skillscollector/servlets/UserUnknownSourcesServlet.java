@@ -30,7 +30,7 @@ public class UserUnknownSourcesServlet extends HttpServlet {
 
         req.getSession().setAttribute("unknownSources",unknownSources);
 
-        req.getRequestDispatcher("/WEB-INF/views/user-uknown-sources.jsp").forward(req,resp);
+        req.getRequestDispatcher("/WEB-INF/views/user-unknown-sources.jsp").forward(req,resp);
     }
 
     @Override
