@@ -36,7 +36,7 @@
 
 </table>
 
-<!--<form action="user/add-source" method="post">
+<form action="/user/add-source" method="post">
 
     <div class="container">
 
@@ -46,18 +46,20 @@
         </div>
 
 
-            <textarea name="description" id="description" cols="30" rows="4" class="text">
+        <div class="md-form amber-textarea active-amber-textarea">
+            <i class="fas fa-pencil-alt prefix"></i>
+            <textarea id="form" class="md-textarea form-control" rows="3" cols="10" name="description"></textarea>
+            <label for="form">Source Description</label>
+        </div>
 
-            </textarea>
-             <label for="description">Source description</label>
 
-        <%--<div class="md-form">
-            <input type="text" id="description" class="form-control" name="description">
+        <input type="submit" value="Add" class="btn" style="background-color: firebrick">
 
-        </div>--%>
+
+
     </div>
 
-</form> -->
+</form>
 
 <script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"/>
 
