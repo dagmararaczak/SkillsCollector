@@ -32,7 +32,7 @@ public class HibernateInitializer implements ServletContextListener {
 
             hbnProperties.put(Environment.USER, "root");
 
-            hbnProperties.put(Environment.PASS, "Cfaniak1988");
+            hbnProperties.put(Environment.PASS, "");
             hbnProperties.put(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
             hbnProperties.put(Environment.SHOW_SQL, "true");
             hbnProperties.put(Environment.FORMAT_SQL, "true");
